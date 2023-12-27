@@ -1,0 +1,31 @@
+name: delete-github-repository-using-github-workflow
+on:
+  workflow_dispatch:
+    inputs:
+      organization:
+        type: string
+        default: 'devwithkrishna'
+        description: 'The GitHub organization where the repository will be deleted from.'
+        required: true
+      repository_name:
+        type: string
+        default: ''
+        description: 'Enter the repository name'
+        required: true
+         
+jobs:
+  delete-github-repository-using-github-workflow:
+    runs-on: ubuntu-latest
+    steps:           
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Listing the files
+        run: ls -la
+      - name: Execute the program
+        env:
+          GH_TOKEN: ${{ secrets.DEVWITHKRISHNA_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          bash delete_github_repository.sh ${{ inputs.organization }} ${{ inputs.repository_name }}
+
+
+      
