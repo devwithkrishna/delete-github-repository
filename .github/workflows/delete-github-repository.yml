@@ -7,12 +7,12 @@ on:
         default: 'devwithkrishna'
         description: 'The GitHub organization where the repository will be deleted from.'
         required: true
-      repository_name:
+      repository_names:
         type: string
         default: ''
-        description: 'Enter the repository name'
+        description: 'Enter the repository names. if multiple seperate by comma'
         required: true
-         
+run-name: ${{ github.actor }} deleting ${{inputs.repository_names}}         
 jobs:
   delete-github-repository-using-github-workflow:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.DEVWITHKRISHNA_PERSONAL_ACCESS_TOKEN }}
         run: |
-          bash delete_github_repository.sh ${{ inputs.organization }} ${{ inputs.repository_name }}
+          bash delete_github_repository.sh ${{ inputs.organization }} ${{ inputs.repository_names }}
 
 
       
