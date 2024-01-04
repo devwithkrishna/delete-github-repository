@@ -12,7 +12,7 @@ on:
         default: ''
         description: 'Enter the repository names. if multiple seperate by comma'
         required: true
-         
+run-name: ${{ github.actor }} deleting ${{inputs.repository_names}}         
 jobs:
   delete-github-repository-using-github-workflow:
     runs-on: ubuntu-latest
