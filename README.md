@@ -11,7 +11,9 @@ reference: [delete-github-repository](https://docs.github.com/en/rest/repos/repo
 ## How code works
 
 * requires owner name / organization name
-* requires repository name
+* requires repository names
+* Multiple repo names can be provided as a comma seperated values.
+    * * Eg: testrepo,testrepo1,testrepo2 
 
 ```
 These parameters are received from the github workflow UI. These are then passed to restAPI in bash script
